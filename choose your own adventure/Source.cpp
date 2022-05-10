@@ -10,14 +10,31 @@ void topHallway();
 
 int main()
 {
+	int entryChoice=0;
+	int selectEntry=0;
 	//context dialogue
 	//entrance points options info and risks
 	//how do you wanna get in?
-	cout << "   1: main entrance" << endl;
-	cout << "   2: hallway by the hero housing" << endl;
-	cout << "   3: hallway by the inventor lab" << endl;
-
-	int entryChoice = validateInteger(3,1);
+	
+	do
+	{
+		cout << "   1: main entrance" << endl;
+		cout << "   2: hallway by the hero housing" << endl;
+		cout << "   3: hallway by the inventor lab" << endl;
+		entryChoice = validateInteger(3,1);
+		switch(entryChoice)
+		{
+			case 1:	
+				//main entrance 
+				//main entrance info
+				break;
+		}
+		//would you like to select this option (yes=1 no=2)?
+		//selectEntry=validateInteger(2,1);
+	}while(selectEntry!=1);
+	
+	
+	
 	switch (entryChoice)
 	{
 	case 1:	//main entrance
@@ -87,6 +104,9 @@ void mainEntrance()
 			//discribe setting
 			//use keycard to get in or keep exploring
 			//if use keycard to get in set breakIn to 1
+			//write break in scene no enemies encountered
+			//use keycard to enter inventory lab private
+			//if breakIn=1 then call inventorLab function
 			break;
 		}
 	} while (breakIn != 1);
@@ -216,12 +236,6 @@ void topHallway()
 			break;
 		}
 	} while (menuChoice != 7);
-}
-
-void inventorLabPublic()
-{
-	//describe setting
-	//use keycard to go to inventory lab
 }
 
 void inventorLab()
