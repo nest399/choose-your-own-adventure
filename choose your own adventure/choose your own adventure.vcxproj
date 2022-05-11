@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ErisPersonalLibrary\ErisPersonalLibrary\ErisPersonalLibrary.h" />
+    <ClInclude Include="..\..\Personal_Library\Personal_Library\Personal_Library.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
