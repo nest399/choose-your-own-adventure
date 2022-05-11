@@ -350,9 +350,8 @@ void trainingRoom3()
 void trainingRoom4()
 {
 	//describe setting
-	//worker inside 
-	//metal door that you can see roman is on the other side (fingerprint scan? password? keycard with higher clearance?)
-	//hacking it would take to long and would get caught and have to fight nearby workers
+	//hero inside 
+	//maybe can sneak past
 }
 void medicArea()
 {
