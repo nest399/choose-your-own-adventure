@@ -159,8 +159,7 @@ void bottomHallway()
 		cout << "   3: go to training room 3" << endl;
 		cout << "   4: go to training room 4" << endl;
 		cout << "   5: go to science lab" << endl;
-		cout << "   6: go to medic area" << endl;
-		cout << "   7: go further up hallway" << endl;
+		cout << "   6: go further up hallway" << endl;
 		menuChoice = validateInteger(7, 1);
 		switch (menuChoice)
 		{
@@ -184,16 +183,12 @@ void bottomHallway()
 			scienceLab();
 			break;
 		case 6:
-			//go to medic area
-			medicArea();
-			break;
-		case 7:
 			//go further up hallway
 			furtherUpHallway();
 			break;
 		}
 		//if logan not found then say "you feel like youre missing somthing..."
-	} while (menuChoice != 7);
+	} while (menuChoice != 6);
 }
 
 //	STILL NEED DESCRIPTIONS
@@ -243,7 +238,8 @@ void topHallway()
 		cout << "   1: go to worker food court" << endl;
 		cout << "   2: go to hero housing" << endl;
 		cout << "   3: go to training area 1" << endl;
-		cout << "   4: go further up hallway" << endl;
+		cout << "   4: go to medic area" << endl;
+		cout << "   5: go further up hallway" << endl;
 		menuChoice = validateInteger(4, 1);
 		switch (menuChoice)
 		{
@@ -258,11 +254,13 @@ void topHallway()
 		case 3:	//go to training area 1
 			trainingRoom1();
 			break;
-		case 4:	//go further up hallway
+		case 4:	//go to medic area
+			medicArea();
+		case 5:	//go further up hallway
 			furtherUpHallway();
 			break;
 		}
-	} while (menuChoice != 4);
+	} while (menuChoice != 5);
 }
 
 //	STILL NEEDS DESCRIPTION
