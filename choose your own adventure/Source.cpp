@@ -166,13 +166,13 @@ void bottomHallway()
 	//describe setting (hero training 3, hero training 4, device testing, inventor work area, science lab, medic area)
 	do
 	{
-		cout << endl << "what would you like to do?" << endl;
-		cout << "   1: go to private inventor lab" << endl;
-		cout << "   2: go to device testing area" << endl;
-		cout << "   3: go to training room 3" << endl;
-		cout << "   4: go to training room 4" << endl;
-		cout << "   5: go to science lab" << endl;
-		cout << "   6: go further up hallway" << endl;
+		cout << endl << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: go to private inventor lab" << endl;
+		cout << "\t   2: go to device testing area" << endl;
+		cout << "\t   3: go to training room 3" << endl;
+		cout << "\t   4: go to training room 4" << endl;
+		cout << "\t   5: go to science lab" << endl;
+		cout << "\t   6: go further up hallway" << endl;
 		menuChoice = validateInteger(7, 1);
 		switch (menuChoice)
 		{
@@ -200,7 +200,7 @@ void bottomHallway()
 			furtherUpHallway();
 			break;
 		}
-		//if logan not found then say "you feel like youre missing somthing..."
+		//if logan not found then say "you feel like youre missing something..."
 	} while (menuChoice != 6);
 }
 
@@ -212,11 +212,11 @@ void furtherUpHallway()
 	//describe setting (hero meeting room, worker housing)
 	do
 	{
-		cout << endl << "what would you like to do?" << endl;
-		cout << "   1: go to hero meeting room" << endl;
-		cout << "   2: go to worker housing" << endl;
-		cout << "   3: go to hallway by hero rooms" << endl;
-		cout << "   4: go to hallway by inventor lab" << endl;
+		cout << endl << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: go to hero meeting room" << endl;
+		cout << "\t   2: go to worker housing" << endl;
+		cout << "\t   3: go to hallway by hero rooms" << endl;
+		cout << "\t   4: go to hallway by inventor lab" << endl;
 		menuChoice = validateInteger(4, 1);
 		switch (menuChoice)
 		{
@@ -227,7 +227,7 @@ void furtherUpHallway()
 			cout << "DESCRIBE SETTING" << endl;
 			//describe setting
 			//do you have a death wish??? come on!
-			cout << "Marco: Do you have a death wish?! Come on!" << endl;
+			cout << "\tMarco: Do you have a death wish?! Come on!" << endl;
 			break;
 		case 3:	//go to hallway by hero rooms
 			topHallway();
@@ -248,32 +248,30 @@ void topHallway()
 	do
 	{
 		//what like to do?
-		cout << "   1: go to worker food court" << endl;
-		cout << "   2: go to hero housing" << endl;
-		cout << "   3: go to training area 1" << endl;
-		cout << "   4: go to medic area" << endl;
-		cout << "   5: go further up hallway" << endl;
+		cout<<"\tWhat would you like to do?"<<endl;
+		cout << "\t1: go to worker food court" << endl;
+		cout << "\t   2: go to hero housing" << endl;
+		cout << "\t   3: go to training area 1" << endl;
+		cout << "\t   4: go further up hallway" << endl;
 		menuChoice = validateInteger(4, 1);
 		switch (menuChoice)
 		{
 		case 1:	//go to worker food court
 			cout << "DESCRIBE SETTING (CAN SEE GYM)" << endl << endl;;
-			cout << "Marco: There's no time for that come on!" << endl;
+			cout << "\tMarco: There's no time for that come on!" << endl;
 			break;
 		case 2:	//go to hero housing
 			cout << "DESCRIBE SETTING" << endl<<endl;
-			cout << "Marco: Do you have a death wish?! Come on!" << endl;
+			cout << "\tMarco: Do you have a death wish?! Come on!" << endl;
 			break;
 		case 3:	//go to training area 1
 			trainingRoom1();
 			break;
-		case 4:	//go to medic area
-			medicArea();
-		case 5:	//go further up hallway
+		case 4:	//go further up hallway
 			furtherUpHallway();
 			break;
 		}
-	} while (menuChoice != 5);
+	} while (menuChoice != 4);
 }
 
 //	STILL NEEDS DESCRIPTION
@@ -284,9 +282,9 @@ void inventorLab()
 	cout << "DESCRIBE SETTING (NO ENEMIES)" << endl;
 	do
 	{
-		cout << "what would you like to do?" << endl;
-		cout << "   1: go to hallway" << endl;
-		cout << "   2: go to public inventory and science lab" << endl;
+		cout << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: go to hallway" << endl;
+		cout << "\t   2: go to public inventory and science lab" << endl;
 		userChoice = validateInteger(2, 1);
 		switch (userChoice)
 		{
@@ -294,7 +292,7 @@ void inventorLab()
 			bottomHallway();
 			break;
 		case 2:
-			cout << "Marco: There's no time for that come on!" << endl;
+			cout << "\tMarco: There's no time for that come on!" << endl;
 			break;
 		}
 	} while (userChoice != 1);
@@ -337,19 +335,20 @@ void trainingRoom3()
 	//are you sure you wanna do that???
 	do
 	{
-		cout << endl << "what would you like to do?" << endl;
-		cout << "   1: try and get through the door\n   2: go to hallway" << endl;
+		cout << endl << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: try and get through the door\n\t   2: go to hallway" << endl;
 		userChoice = validateInteger(2, 1);
 		switch (userChoice)
 		{
 		case 1:	//try and get through the door
-			cout << "Marco: I could hack the scanner but it will take me a bit and might draw unwanted attention to us" << endl;
-			cout << "Still want to get through the door?" << endl;
-			cout << "   1: yes\n   2: no" << endl;
+			cout << "\tMarco: I could hack the scanner but it will take me a bit and might draw unwanted attention to us" << endl;
+			cout << "\tStill want to get through the door?" << endl;
+			cout << "\t   1: yes\n\t   2: no" << endl;
 			breakIn = validateInteger(2, 1);
 			break;
 		case 2: //go to hallway
 			bottomHallway();
+			break;
 		}
 	} while (breakIn != 1);
 	cout << "TRY TO BREAK INTO DOOR WITH RANDOM NUMBER GENERATOR FOR WHAT HAPPENS" << endl;
@@ -364,6 +363,7 @@ void trainingRoom4()
 	//hero inside 
 	//maybe can sneak past
 }
+
 void medicArea()
 {
 	//describe setting
@@ -376,4 +376,13 @@ void scienceLab()
 	//describe setting
 	//logan inside (set logan found to 1)
 	//reunion dialogue scene
+}
+
+void slow(string s)
+{
+	for (int j = 0; j < s.size(); j++)
+	{
+		for (int i = 0; i <= 19999999; i++);
+		cout << s[j];
+	}
 }
