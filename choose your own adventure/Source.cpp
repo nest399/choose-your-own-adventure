@@ -3,7 +3,7 @@
 
 // is logan in science lab, device testing lab, or cut scene style when go into furtherUpHallway???
 // still need to work on...
-//		public area(history, statue, public inventor lab)
+//		public area(history, public inventor lab)
 //		bottom hallway(inventor lab, science lab, device testing room, medic area, training room 3, training room 4)
 //		further up hallway(worker housing, hero meeting room)
 //		top hallway(food court, training room 1, training room 2, hero housing)
@@ -20,6 +20,7 @@ void trainingRoom2();
 void trainingRoom3();
 void trainingRoom4();
 void scienceLab();
+void medicArea();
 
 int main()
 {
@@ -42,6 +43,7 @@ int main()
 	endProgram();
 }
 
+//	STILL NEED CONTEXT DIALOGUE
 int openingScene()
 {
 	int entryChoice = 0;
@@ -51,53 +53,57 @@ int openingScene()
 
 	do
 	{
-		cout <<endl<< "How do you want to get in?" << endl;
-		cout << "   1: main entrance" << endl;
-		cout << "   2: hallway by the hero housing" << endl;
-		cout << "   3: hallway by the inventor lab" << endl;
+		cout <<endl<< "\tHow do you want to get in?" << endl;
+		cout << "\t   1: main entrance" << endl;
+		cout << "\t   2: hallway by the hero housing" << endl;
+		cout << "\t   3: hallway by the inventor lab" << endl;
 		entryChoice = validateInteger(3, 1);
 		switch (entryChoice)
 		{
 		case 1:	//main entrance info and risks
-			cout << "Remus: when you go in there is gonna be a lot of people so you will blend in with the crowd"<<endl;
-			cout << "Remus: you gotta go to the Inventor and Science Lab and there is a door that needs a keycard" << endl;
-			cout << "Remus: inside there is another door that also needs the keycard then you're in the ";
-			cout << "inventor lab across from training room 3 and 4"<<endl;
+			cout << "\tRemus: when you go in there is gonna be a lot of people so you will blend in with the crowd"<<endl;
+			cout << "\tRemus: you gotta go to the Inventor and Science Lab and there is a door that needs a keycard" << endl;
+			cout << "\tRemus: inside there is another door that also needs the keycard" << endl;
+			cout << "\tRemus: that will put you in the inventor lab across from training room 3 and 4"<<endl;
 			break;
 		case 2:	//top hallway info and risks
-			cout << "Remus: there's a door with a passcode that Marco can get through with enough time but nobody should ";
-			cout << "be patroling the outside however you'll end up right next to Hero Housing so try and be quiet"<<endl;
+			cout << "\tRemus: there's a door with a passcode that Marco can get through with enough time" << endl;
+			cout << "\tRemus: nobody should be patroling the outside" << endl;
+			cout << "\tRemus: you'll end up right next to Hero Housing so try and be quiet" << endl;
 			break;
 		case 3:	//bottom hallway info and risks
-			cout << "Remus: with that option the only entry point will be the one you make yourself which works for me ";
-			cout << "but doing that will definately set off the alarm system" << endl;
+			cout << "\tRemus: with that option the only entry point will be the one you make yourself" << endl;
+			cout << "\tRemus: I'm all for property dammage but doing that will definately set off the alarm system" << endl;
 			break;
 		}
 
-		cout << "still want to get in that way?" << endl;
-		cout << "   1: yes\n   2: no" << endl;
+		cout << "\n\tstill want to get in that way?" << endl;
+		cout << "\t   1: yes\n\t   2: no" << endl;
 		selectEntry = validateInteger(2, 1);
 	} while (selectEntry != 1);
-	cout << "Remus: off you go then. make sure you bring my brother home";
+	cout << "\tRemus: off you go then. make sure you bring my brother home";
 	return entryChoice;
 }
 
-//	STILL NEED DESCRIPTIONS
+//	STILL NEED HISTORY THINGY 
 void mainEntrance()
 {
 	int menuChoice = 0;
 	int breakIn = 0;
-	//describe setting (history things, statue, inventor labs public)
+	string pause = "...";
+	cout << "you walk through the revolving door and can see " << endl;
+	cout<<"\tMarco: You might as well look around while we are here"<<
+	//describe setting (history things)
 	do
 	{
-		cout <<endl<< "what would you like to do?" << endl;
-		cout << "   1: explore history area" << endl;
-		cout << "   2: examine statue" << endl;
-		cout << "   3: go to gift shop" << endl;
-		cout << "   4: go to food court" << endl;
-		cout << "   5: go to the meet and greet area" << endl;
-		cout << "   6: go to theater" << endl;
-		cout << "   7: go to inventor lab" << endl;
+		cout <<endl<< "\tWhat would you like to do?" << endl;
+		cout << "\t   1: explore history area" << endl;
+		cout << "\t   2: examine statue" << endl;
+		cout << "\t   3: go to gift shop" << endl;
+		cout << "\t   4: go to food court" << endl;
+		cout << "\t   5: go to the meet and greet area" << endl;
+		cout << "\t   6: go to theater" << endl;
+		cout << "\t   7: go to inventor lab" << endl;
 		menuChoice = validateInteger(7, 1);
 
 		switch (menuChoice)
@@ -107,22 +113,23 @@ void mainEntrance()
 			//do you wanna read the hero bio thingys??? next one (maybe)
 			break;
 		case 2:	//examine statue 
-			cout << "DESCRIBE STATUE IN MORE DETAIL AND READ PLAQUE" << endl;
+			cout << "there is a tall marble statue of a hero carved carefully out of marble" << endl;
+			cout << "it is standing on a large base with a plaque that is nearly unreadable" << endl;
 			break;
 		case 3:	//go to gift shop
-			cout << "the gift shops walls are lined with every item of clothing that they could put a hero's logo on ";
-			cout << "there is everything from puzzles to bobble heads to capes each with a variety of popular hero logos and names on them" << endl;
+			cout << "the gift shops walls are lined with every item of clothing that they could put a hero's logo on"<<endl;
+			cout << "there is everything from puzzles to bobble heads to capes with a variety of popular hero names and logos on them" << endl;
 			cout << "there is lots of kids excitedly looking through the store and practically begging their parents to buy them things" << endl;
 			cout << "you hear a child that cant be much older than 10 tell their teacher how they wanna be a hero when they grow up" << endl;
 			cout << "if they knew how their beloved heros became heros they would change their mind" << endl;
 			break;
 		case 4:	//go to food court
-			cout << "there is several fast food restraunts each with their own unnecessarily long lines" << endl;
+			cout << "there is several fast food restaurants each with their own unnecessarily long lines" << endl;
 			cout << "there is a large group of kids all wearing matching neon shirts with their schools name on the back" << endl;
-			cout << "Marco: There's no time for that!" << endl;
+			cout << "\tMarco: There's no time for that!" << endl;
 			break;
 		case 5:	//go to meet and greet area
-			cout << "you aproach the meet and greet area and are met with a glass barrier\nbeyond the glass barrier ";
+			cout << "you approach the meet and greet area and are met with a glass barrier" << endl;
 			cout << "you can see a group of children sitting in a circle listening eagerly to the worker standing in the center" << endl;
 			break;
 		case 6:	//go to theater
@@ -130,15 +137,21 @@ void mainEntrance()
 			cout << "next to the door there is a poster advertising an event with a suprise hero guest" << endl;
 			break;
 		case 7:	//go to inventor lab
-			cout << "DESCRIBE SETTING" << endl;
+			cout << "you approach the inventor lab and see it is full of computers, microscopes, and tools" << endl;
+			cout << "you can see a door on the side of the room with a keycard machine next to it" << endl;
+			cout << "nobody is inside and nobody else is nearby" << endl;
 
-			cout << "Marco: are you ready or do you want to look around more?" << endl;
-			cout << "   1: I'm ready\n   2: I still need a minute" << endl;
+			cout << "\tMarco: are you ready or do you want to look around more?" << endl;
+			cout << "\t   1: I'm ready\n\t   2: I still need a minute" << endl;
 			breakIn = validateInteger(2, 1);
 			if (breakIn == 1)
 			{
-				cout << "DESCRIBE BREAK IN PROCESS FOR PUBLIC LAB AND GETTING INTO PRIVATE LAB" << endl;
-				//no enemies encountered
+				cout << "you try the keycard on the door"<<endl;
+				slow(pause);
+				cout << "\nthe door unlocks and opens allowing you to go inside" << endl;
+				cout << "once you are inside you attempt to open the second door" << endl;
+				slow(pause);
+				cout << "\nthe door unlocks and opens allowing you to go inside the private inventor lab" << endl;
 				inventorLab();
 			}
 			break;
