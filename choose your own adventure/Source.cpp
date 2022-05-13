@@ -1,5 +1,5 @@
-#include "..\..\ErisPersonalLibrary\ErisPersonalLibrary\ErisPersonalLibrary.h"
-//#include "C:\Users\suther61685\source\repos\Personal_Library\Personal_Library\Personal_Library.h"
+//#include "..\..\ErisPersonalLibrary\ErisPersonalLibrary\ErisPersonalLibrary.h"
+#include "C:\Users\suther61685\source\repos\Personal_Library\Personal_Library\Personal_Library.h"
 
 // is logan in science lab, device testing lab, or cut scene style when go into furtherUpHallway???
 // still need to work on...
@@ -8,19 +8,23 @@
 //		further up hallway(worker housing, hero meeting room)
 //		top hallway(food court, training room 1, training room 2, hero housing)
 
+int openingScene();
 void mainEntrance();
-void inventorLab();
-void deviceTestingRoom();
 void bottomHallway();
 void furtherUpHallway();
 void topHallway();
-int openingScene();
+void inventorLab();
+void heroMeeting();
+void scienceLab();
+void deviceTestingRoom();
+void medicArea();
 void trainingRoom1();
 void trainingRoom2();
 void trainingRoom3();
 void trainingRoom4();
-void scienceLab();
-void medicArea();
+void slow(string);
+
+
 
 int main()
 {
@@ -91,9 +95,10 @@ void mainEntrance()
 	int menuChoice = 0;
 	int breakIn = 0;
 	string pause = "...";
-	cout << "you walk through the revolving door and can see " << endl;
-	cout<<"\tMarco: You might as well look around while we are here"<<
-	//describe setting (history things)
+	cout << "you walk through the revolving door and are in a large area with lots things" << endl;
+	cout<<"there is lots of families and school groups scattered around looking everything" << endl;
+	cout << "\tMarco: You might as well look around while we are here" << endl;
+
 	do
 	{
 		cout <<endl<< "\tWhat would you like to do?" << endl;
@@ -204,12 +209,12 @@ void bottomHallway()
 	} while (menuChoice != 6);
 }
 
-//	STILL NEED DESCRIPTIONS
+//	STILL NEED WORKER HOUSING DESCRIPTION
 //hero meeting room, worker housing
 void furtherUpHallway()
 {
 	int menuChoice = 0;
-	//describe setting (hero meeting room, worker housing)
+	//describe setting (worker housing)
 	do
 	{
 		cout << endl << "\tWhat would you like to do?" << endl;
@@ -221,7 +226,7 @@ void furtherUpHallway()
 		switch (menuChoice)
 		{
 		case 1:	//go to hero meeting room
-			cout << "DESCRIBE SETTING (NO ENEMIES INSIDE)" << endl;
+			heroMeeting();
 			break;
 		case 2:	//go to worker housing
 			cout << "DESCRIBE SETTING" << endl;
@@ -239,7 +244,7 @@ void furtherUpHallway()
 	} while (menuChoice != 4);
 }
 
-//STILL NEED DISCRIPTIONS
+//	STILL NEED FOOD COURT AND HERO HOUSING DISCRIPTIONS
 //worker food court, can see gym, hero housing, hero training 1, hero training 2
 void topHallway()
 {
@@ -278,7 +283,7 @@ void topHallway()
 void inventorLab()
 {
 	int userChoice = 0;
-	//keycard entry
+	//public inventor lab door that needs keycard entry
 	cout << "DESCRIBE SETTING (NO ENEMIES)" << endl;
 	do
 	{
@@ -324,6 +329,8 @@ void trainingRoom2()
 	//you died screen that has endProgram thingy
 }
 
+//	CODE IN PROGRESS
+//	STILL NEEDS DESCRIPTION
 void trainingRoom3()
 {
 	int userChoice = 0;
@@ -373,9 +380,33 @@ void medicArea()
 
 void scienceLab()
 {
-	//describe setting
+	//if logan found then say "theres no need for that, we should hurry"
+	//describe setting mention oddly familiar worker
 	//logan inside (set logan found to 1)
 	//reunion dialogue scene
+}
+
+void heroMeeting()
+{
+	int userChoice = 0;
+cout << "DESCRIBE SETTING (NO ENEMIES INSIDE)" << endl;
+
+do
+{
+	cout << "\tWhat would you like to do?" << endl;
+	cout << "\t   1: go to hallway" << endl;
+	//cout << "\t   2: go to public inventory and science lab" << endl;
+	userChoice = validateInteger(1, 1);
+	switch (userChoice)
+	{
+	case 1:
+		bottomHallway();
+		break;
+	case 2:
+		cout << "\tMarco: There's no time for that come on!" << endl;
+		break;
+	}
+} while (userChoice != 1);
 }
 
 void slow(string s)
