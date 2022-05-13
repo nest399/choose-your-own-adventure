@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ErisPersonalLibrary\ErisPersonalLibrary\ErisPersonalLibrary.h" />
     <ClInclude Include="..\..\Personal_Library\Personal_Library\Personal_Library.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
