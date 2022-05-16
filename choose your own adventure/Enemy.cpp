@@ -9,11 +9,16 @@ void Enemy::setRole(int)	//0 is worker 1 is hero
 	role = 1;
 }
 
-void Enemy::setHealth(int damage)
+void Enemy::takeDamage(int damage)
 {
 	health -= damage;
+	wounded = 1;
 }
 
+void Enemy::getHealth(int temp)
+{
+	health = temp;
+}
 void Enemy::setWounded(int status)
 {
 	wounded = status;
@@ -60,7 +65,7 @@ float Enemy::getAttack()
 	return attack;
 }
 
-void Enemy::getRole()
+void Enemy::displayRole()
 {
 	if (role == 1)
 	{
@@ -71,7 +76,7 @@ void Enemy::getRole()
 	}
 }
 
-void Enemy::getAware()
+void Enemy::displayAware()
 {
 	if (aware == 1)
 	{

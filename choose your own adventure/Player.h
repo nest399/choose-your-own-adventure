@@ -6,6 +6,7 @@ private:
 	int wounded;	//if wounded set to 1 if not then 0
 	int foundLogan;
 	int alarmSet;
+	int medicEnemyRemaining;
 public:
 	Player()
 	{
@@ -14,12 +15,15 @@ public:
 		wounded = 0;
 		foundLogan = 0;
 		alarmSet = 0;
+		medicEnemyRemaining = 3;
 	}
 
-	void setHealth(int damage);
+	void takeDamage(int);
+	void setHealth(int);
 	void setLoganFound();
 	void setAlarm();
 	void setWounded(int);
+	void setMedicEnemyRemaining(int);
 	float getAttack();
 
 	int getHealth()
@@ -38,5 +42,10 @@ public:
 	int getAlarm()
 	{
 		return alarmSet;
+	}
+
+	int getMedicEnemyRemaining()
+	{
+		return medicEnemyRemaining;
 	}
 };

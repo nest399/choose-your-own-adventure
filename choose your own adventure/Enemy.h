@@ -19,13 +19,19 @@ public:
 	}
 
 	void setRole(int);
+	void takeDamage(int);
 	void setHealth(int);
 	void setWounded(int);
 	void setAlarm();
 	void setAware(int);
-	void getRole();
+	void displayRole();
 	float getAttack();
-	void getAware();
+	void displayAware();
+	
+	int getAware()
+	{
+		return aware;
+	}
 
 	int getHealth()
 	{

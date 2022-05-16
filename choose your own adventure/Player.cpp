@@ -1,9 +1,15 @@
 #include "Player.h"
 using namespace std;
 
-void Player::setHealth(int damage)
+void Player::takeDamage(int damage)
 {
 	health -= damage;
+	wounded = 1;
+}
+
+void Player::setHealth(int temp)
+{
+	health = temp;
 }
 
 void Player::setLoganFound()	//once found permanently set found
@@ -21,12 +27,17 @@ void Player::setWounded(int status)
 	wounded = status;
 }
 
+void Player::setMedicEnemyRemaining(int remaining)
+{
+	medicEnemyRemaining -= remaining;
+}
+
 float Player::getAttack()
 {
 	float attack=0;
 	if (wounded == 1)
 	{
-		attack = (baseAttack / 2);
+		attack = (baseAttack / 1.5);
 	}
 	else
 	{

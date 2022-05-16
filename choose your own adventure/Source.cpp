@@ -49,7 +49,289 @@ int main()
 	endProgram();
 }
 
-//	STILL NEED CONTEXT DIALOGUE
+
+
+//	ENTIRELY DONE!!!
+#pragma region entirely done
+void slow(string s)
+{
+	for (int j = 0; j < s.size(); j++)
+	{
+		for (int i = 0; i <= 19999999; i++);
+		cout << s[j];
+	}
+}
+
+void bottomHallway(Player &user)
+{
+	int menuChoice = 0;
+	//hero training 3, hero training 4, device testing, inventor work area, science lab, medic area
+	do
+	{
+		cout << endl << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: go to private inventor lab" << endl;
+		cout << "\t   2: go to device testing area" << endl;
+		cout << "\t   3: go to training room 3" << endl;
+		cout << "\t   4: go to training room 4" << endl;
+		cout << "\t   5: go to science lab" << endl;
+		cout << "\t   6: go further up hallway" << endl;
+		menuChoice = validateInteger(7, 1);
+		switch (menuChoice)
+		{
+		case 1:	//go to private inventor lab
+			inventorLab(user);
+			break;
+		case 2:	//go to device testing area
+			deviceTestingRoom(user);
+			break;
+		case 3:	//go to training area 3
+			trainingRoom3(user);
+			break;
+		case 4:	//go to training area 4
+			trainingRoom4(user);
+			break;
+		case 5:	//go to science lab
+			scienceLab(user);
+			break;
+		case 6:	//go further up hallway
+			furtherUpHallway(user);
+			break;
+		}
+
+		//if logan not found
+		if (user.getLogan() == 0)
+		{
+			slow("you feel like you are missing somthing...");
+		}
+		
+	} while (menuChoice != 6);
+}
+
+//test it still
+void fightScene(Player user, Enemy enemy)
+{
+	int userChoice = 0;
+	int sucessful = 0;
+	cout << "\nENEMY SPOTTED!" << endl;
+
+	//The  worker/hero has/has not noticed you
+	cout << "the ";
+	enemy.displayRole();
+	cout << " ";
+	enemy.displayAware();
+	cout << endl;
+
+	do
+	{
+		cout << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: attack them" << endl;
+		cout << "\t   2: run away" << endl;
+		cout << "\t   3: check health" << endl;
+		cout << "\t   4: try to sneak past" << endl;
+		userChoice = validateInteger(4, 1);
+		switch (userChoice)
+		{
+		case 1:	//attack
+			enemy.takeDamage(user.getAttack());
+			cout << "you attack and do... " << user.getAttack() << " damage!" << endl;
+			if (enemy.getHealth() > 0)
+			{
+				user.takeDamage(enemy.getAttack());
+				cout << "they attack and do... " << enemy.getAttack() << "damage!" << endl;
+				if (user.getHealth() <= 0)
+				{
+					endScene();
+				}
+			}
+			break;
+		case 2:	//run away
+			//if enemy aware set or alarm set than always fail
+			if (user.getAlarm() == 1)
+			{
+				cout << "you try to run away but it fails!" << endl;
+			}
+			if (user.getAlarm() == 0)
+			{
+				if (enemy.getAware() == 1)
+				{
+					cout << "you try to run away but it fails!" << endl;
+				}
+				else {
+
+					user.takeDamage(enemy.getAttack());
+					cout << "they attack and do... " << enemy.getAttack() << "damage!" << endl;
+					if (user.getHealth() <= 0)
+					{
+						endScene();
+					}
+				}
+
+			}
+			break;
+		case 3:	//check stats
+			cout << "health: " << user.getHealth() << "%" << endl;
+			break;
+		case 4: //sneak past
+			//random number (1-5) to know if sucessfull if alarm is set then always fail
+			sucessful = randomInteger(1, 5);
+			if (user.getAlarm() == 0)
+			{
+				if (sucessful != 2)
+				{
+					enemy.takeDamage(user.getAttack());
+					cout << "you attack and do... " << user.getAttack() << " damage!" << endl;
+					if (enemy.getHealth() > 0)
+					{
+						user.takeDamage(enemy.getAttack());
+						cout << "they attack and do... " << enemy.getAttack() << "damage!" << endl;
+						if (user.getHealth() <= 0)
+						{
+							endScene();
+						}
+					}
+				}
+
+				//if fail than enemy goes first
+				if (sucessful == 2)	//if 2 then fail
+				{
+					user.takeDamage(enemy.getAttack());
+					if (user.getHealth() > 0)
+					{
+						enemy.takeDamage(user.getAttack());
+
+					}
+					if (user.getHealth() <= 0)
+					{
+						endScene();
+					}
+				}
+			}
+			break;
+
+		}
+	} while ((user.getHealth() > 0) && (enemy.getHealth()>0));
+}
+
+//test it still
+void medicArea(Player &user)
+{
+	int userChoice = 0;
+	Enemy worker1;
+	Enemy worker2;
+	Enemy hero;
+	
+	//set worker2 and hero aware and set hero role to hero and health to 50
+	worker2.setAware(1);
+	hero.setAware(1);
+	hero.setRole(1);
+	hero.setHealth(50);
+
+	cout << "you walk inside the medic area and there is several beds covered in white sheets" << endl;
+	cout << "one of the beds has a wounded hero on it and there is two doctors helping him" << endl;
+	cout << "you can see a metal door with a keycard scanner that leads to training room 2" << endl;
+	cout << "there is a storage area filled with various medical supplies" << endl;
+	
+	do
+	{
+		switch (user.getMedicEnemyRemaining())
+		{
+		case 3:
+			fightScene(user, worker1);
+			user.setMedicEnemyRemaining(1);
+			break;
+		case 2:
+			fightScene(user, worker2);
+			user.setMedicEnemyRemaining(1);
+			break;
+		case 1:
+			fightScene(user, hero);
+			user.setMedicEnemyRemaining(1);
+			break;
+		}
+	} while (user.getMedicEnemyRemaining() != 0);
+	
+	do {
+		cout << endl << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: use healing supplies" << endl;
+		cout << "\t   2: go to hallway" << endl;
+		userChoice = validateInteger(2, 1);
+		switch (userChoice)
+		{
+		case 1:	//use healing supplies
+			cout << "you walk over to the medical supplies and Missy is able to heal you to 100%" << endl;
+			cout << "\tMissy: there ya go, that should be a bit better for ya" << endl;
+			cout << "\tMissy: you're still wounded though so be careful" << endl;
+			user.setHealth(100);
+			break;
+		case 2:	//go to hallway
+			topHallway(user);
+			break;
+		}
+	} while (userChoice != 2);
+}
+#pragma endregion
+
+
+//	JUST NEEDS DESCRIPTION OR DIALOGE
+#pragma region needs description or dialoge
+void endScene()
+{
+	cout << "WRITE ENDING WORDS" << endl;
+	cout << "YOU DIED! GAME OVER" << endl;
+	endProgram();
+}
+
+void heroMeeting(Player &user)
+{
+	int userChoice = 0;
+	cout << "DESCRIBE SETTING (NO ENEMIES INSIDE)" << endl;
+
+	cout << "\tWhat would you like to do?" << endl;
+	cout << "\t   1: go to hallway" << endl;
+	userChoice = validateInteger(1, 1);
+	bottomHallway(user);
+}
+
+void scienceLab(Player &user)
+{
+	//if logan found
+	if (user.getLogan() == 1)
+	{
+		slow("Logan: There is no need for that, we should hurry\n");
+	}
+
+	//if logan not found
+	if (user.getLogan() == 0)
+	{
+		//describe setting mention oddly familiar worker
+		user.setLoganFound();
+		//reunion dialogue scene
+	}
+}
+
+void inventorLab(Player &user)
+{
+	int userChoice = 0;
+	//public inventor lab door that needs keycard entry
+	cout << "DESCRIBE SETTING (NO ENEMIES)" << endl;
+	do
+	{
+		cout << "\tWhat would you like to do?" << endl;
+		cout << "\t   1: go to hallway" << endl;
+		cout << "\t   2: go to public inventory and science lab" << endl;
+		userChoice = validateInteger(2, 1);
+		switch (userChoice)
+		{
+		case 1:
+			bottomHallway(user);
+			break;
+		case 2:
+			cout << "\tMarco: There's no time for that come on!" << endl;
+			break;
+		}
+	} while (userChoice != 1);
+}
+
 int openingScene()
 {
 	int entryChoice = 0;
@@ -91,7 +373,7 @@ int openingScene()
 	return entryChoice;
 }
 
-//	STILL NEED HISTORY THINGY 
+//describe history stuff
 void mainEntrance(Player &user)
 {
 	int menuChoice = 0;
@@ -170,56 +452,9 @@ void mainEntrance(Player &user)
 	} while (breakIn != 1);
 }
 
-//hero training 3, hero training 4, device testing, inventor work area, science lab, medic area
-void bottomHallway(Player &user)
-{
-	int menuChoice = 0;
-	//describe setting (hero training 3, hero training 4, device testing, inventor work area, science lab, medic area)
-	do
-	{
-		cout << endl << "\tWhat would you like to do?" << endl;
-		cout << "\t   1: go to private inventor lab" << endl;
-		cout << "\t   2: go to device testing area" << endl;
-		cout << "\t   3: go to training room 3" << endl;
-		cout << "\t   4: go to training room 4" << endl;
-		cout << "\t   5: go to science lab" << endl;
-		cout << "\t   6: go further up hallway" << endl;
-		menuChoice = validateInteger(7, 1);
-		switch (menuChoice)
-		{
-		case 1:	//go to private inventor lab
-			inventorLab(user);
-			break;
-		case 2:	//go to device testing area
-			deviceTestingRoom(user);
-			break;
-		case 3:	//go to training area 3
-			trainingRoom3(user);
-			break;
-		case 4:	//go to training area 4
-			trainingRoom4(user);
-			break;
-		case 5:	//go to science lab
-			scienceLab(user);
-			break;
-		case 6:	//go further up hallway
-			furtherUpHallway(user);
-			break;
-		}
-
-		//if logan not found
-		if (user.getLogan() == 0)
-		{
-			slow("you feel like you are missing somthing...");
-		}
-		
-	} while (menuChoice != 6);
-}
-
-//	STILL NEED WORKER HOUSING DESCRIPTION
-//hero meeting room, worker housing
 void furtherUpHallway(Player &user)
 {
+	//hero meeting room, worker housing
 	int menuChoice = 0;
 	//describe setting (worker housing)
 	do
@@ -250,20 +485,20 @@ void furtherUpHallway(Player &user)
 	} while (menuChoice != 4);
 }
 
-//	STILL NEED FOOD COURT AND HERO HOUSING DISCRIPTIONS
-//worker food court, can see gym, hero housing, hero training 1, hero training 2
 void topHallway(Player &user)
 {
+	//worker food court, can see gym, hero housing, hero training 1, medic area
 	int menuChoice = 0;
-	//describe setting (worker food court and gym, hero housing, hero training 1)
+	//describe setting (worker food court and gym, hero housing)
 	do
 	{
 		//what like to do?
 		cout<<"\tWhat would you like to do?"<<endl;
-		cout << "\t1: go to worker food court" << endl;
+		cout << "\t   1: go to worker food court" << endl;
 		cout << "\t   2: go to hero housing" << endl;
 		cout << "\t   3: go to training area 1" << endl;
-		cout << "\t   4: go further up hallway" << endl;
+		cout << "\t   4: go to medic area" << endl;
+		cout << "\t   5: go further up hallway" << endl;
 		menuChoice = validateInteger(4, 1);
 		switch (menuChoice)
 		{
@@ -278,37 +513,36 @@ void topHallway(Player &user)
 		case 3:	//go to training area 1
 			trainingRoom1(user);
 			break;
-		case 4:	//go further up hallway
+		case 4: //go to medic area
+			medicArea(user);
+			break;
+		case 5:	//go further up hallway
 			furtherUpHallway(user);
 			break;
 		}
-	} while (menuChoice != 4);
+	} while (menuChoice != 5);
 }
 
-//	STILL NEEDS DESCRIPTION
-void inventorLab(Player &user)
+//test it still
+void trainingRoom4(Player &user)
 {
-	int userChoice = 0;
-	//public inventor lab door that needs keycard entry
-	cout << "DESCRIBE SETTING (NO ENEMIES)" << endl;
-	do
+	Enemy enemy;
+	//describe setting 
+	//hero inside 
+	//maybe can sneak past
+	cout << "DESCRIBE SETTING HERO INSIDE MAYBE CAN SNEAK PAST" << endl;
+	enemy.setRole(1);
+	if (user.getAlarm() == 1)
 	{
-		cout << "\tWhat would you like to do?" << endl;
-		cout << "\t   1: go to hallway" << endl;
-		cout << "\t   2: go to public inventory and science lab" << endl;
-		userChoice = validateInteger(2, 1);
-		switch (userChoice)
-		{
-		case 1:
-			bottomHallway(user);
-			break;
-		case 2:
-			cout << "\tMarco: There's no time for that come on!" << endl;
-			break;
-		}
-	} while (userChoice != 1);
+		enemy.setAlarm();
+	}
+	fightScene(user,enemy);
 }
+#pragma endregion
 
+
+//	INCOMPLETE
+#pragma region incomplete
 void deviceTestingRoom(Player &user)
 {
 	//describe setting
@@ -335,8 +569,6 @@ void trainingRoom2(Player &user)
 	//you died screen that has endProgram thingy
 }
 
-//	CODE IN PROGRESS
-//	STILL NEEDS DESCRIPTION
 void trainingRoom3(Player &user)
 {
 	int userChoice = 0;
@@ -369,135 +601,7 @@ void trainingRoom3(Player &user)
 	//one option for nothing happens and one option for sucsessfull
 	//wanna keep trying (loop if yes if no then go to bottom hallway)
 }
+#pragma endregion
 
-void trainingRoom4(Player &user)
-{
-	//describe setting
-	//hero inside 
-	//maybe can sneak past
-}
 
-void medicArea(Player &user)
-{
-	//describe setting
-	//metal door that leads to training room 2 (fingerprint scan? password? keycard with higher clearance?)
-	//four workers and a hero (wounded) inside 
-}
 
-//	STILL NEEDS DESCRIPTION AND LOGAN REUNION SCENE
-void scienceLab(Player &user)
-{
-	//if logan found
-	if (user.getLogan() == 1)
-	{
-		slow("Logan: There is no need for that, we should hurry\n");
-	}
-
-	//if logan not found
-	if (user.getLogan() == 0)
-	{
-		//describe setting mention oddly familiar worker
-		user.setLoganFound();
-		//reunion dialogue scene
-	}
-}
-
-void heroMeeting(Player &user)
-{
-	int userChoice = 0;
-cout << "DESCRIBE SETTING (NO ENEMIES INSIDE)" << endl;
-
-	cout << "\tWhat would you like to do?" << endl;
-	cout << "\t   1: go to hallway" << endl;
-	userChoice = validateInteger(1, 1);
-	bottomHallway(user);
-}
-
-void slow(string s)
-{
-	for (int j = 0; j < s.size(); j++)
-	{
-		for (int i = 0; i <= 19999999; i++);
-		cout << s[j];
-	}
-}
-
-void fightScene(Player user, Enemy enemy)
-{
-	int userChoice = 0;
-	int sucessful = 0;
-	cout << "\nENEMY SPOTTED!"<<endl;
-	//The  worker/hero has/has not noticed you
-	cout << "the " << enemy.getRole() << " " << enemy.getAware() << endl;
-	do
-	{ 
-	cout << "\tWhat would you like to do?" << endl;
-	cout << "\t   1: attack them" << endl;
-	cout << "\t   2: run away" << endl;
-	cout << "\t   3: check health" << endl;
-	cout << "\t   4: try to sneak past" << endl;
-	userChoice = validateInteger(4, 1);
-	switch (userChoice)
-	{
-	case 1:	//attack
-		enemy.setHealth(user.getAttack());
-		if (enemy.getHealth() > 0)
-		{
-			user.setHealth(enemy.getAttack());
-			if (user.getHealth() <= 0)
-			{
-				endScene();
-			}
-		}
-		break;
-	case 2:	//run away
-		//if enemy aware set or alarm set than always fail
-		break;
-	case 3:	//check stats
-		cout << "health: " << user.getHealth()<<"%"<<endl;
-		break;
-	case 4: //sneak past
-		//random number (1-5) to know if sucessfull if alarm is set then always fail
-		//if fail than enemy goes first
-		if (sucessful == 2)	//if 2 then fail
-		{
-			user.setHealth(enemy.getAttack());
-			if (user.getHealth() > 0)
-			{
-				enemy.setHealth(user.getAttack());
-				
-			}
-			if (user.getHealth() <= 0)
-			{
-				endScene();
-			}
-		}
-		break;
-	
-	}
-
-		/*enemy.setHealth=user.getAttack
-		If (enemy.getHealth>0)
-		{
-		user.setHealth=enemy.getAttack
-			If (user.getHealth<=0)
-			{
-				endProgram();
-			}
-		else{
-		What would you like to do?
-		Attack them
-		Try to run away
-		}
-		}
-		*/
-	} while ((user.getHealth() > 0) && (enemy.getHealth));
-}
-
-//	STILL NEED ENDING SCENE
-void endScene()
-{
-	cout << "WRITE ENDING WORDS" << endl;
-	cout << "YOU DIED! GAME OVER" << endl;
-	endProgram();
-}
