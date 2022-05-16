@@ -38,9 +38,11 @@ int main()
 		mainEntrance(user);
 		break;
 	case 2:	//hallway by hero housing
+		cout<<"DESCRIBE BREAK IN THINGY AND FIGHT HERO IN HALLWAY"<<endl;
 		topHallway(user);
 		break;
 	case 3:	//hallway by inventor labs
+		cout<<"DESCRIBE BREAK IN THINGY AND SET ALARM AND FIGHT THE 3 WORKERS"<<endl;
 		bottomHallway(user);
 		break;
 	}
