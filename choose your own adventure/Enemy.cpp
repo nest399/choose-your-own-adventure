@@ -15,7 +15,7 @@ void Enemy::takeDamage(int damage)
 	wounded = 1;
 }
 
-void Enemy::getHealth(int temp)
+void Enemy::setHealth(int temp)
 {
 	health = temp;
 }
