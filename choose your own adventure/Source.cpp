@@ -31,6 +31,10 @@ void loganReunion();
 int main()
 {
 	Player user;
+	Enemy worker1;
+	Enemy worker2;
+	Enemy worker3;
+	Enemy hero;
 	int entryChoice = openingScene();
 	cout << endl << endl;
 	switch (entryChoice)
@@ -43,7 +47,16 @@ int main()
 		topHallway(user);
 		break;
 	case 3:	//hallway by inventor labs
-		cout<<"DESCRIBE BREAK IN THINGY AND SET ALARM AND FIGHT THE 3 WORKERS"<<endl;
+		cout<<"\tMarco: I hope you're ready for a fight"<<endl;
+		cout<<"Marco breaks down the wall and alarms start loudly going off"<<endl;
+		cout<<"three workers come running down the hallway"<<endl;
+		user.alarmSet();
+		worker1.setAlarm();
+		worker2.setAlarm();
+		worker3.setAlarm();
+		fightScene(worker1);
+		fightScene(worker2);
+		fightScene(worker3);
 		bottomHallway(user);
 		break;
 	}
