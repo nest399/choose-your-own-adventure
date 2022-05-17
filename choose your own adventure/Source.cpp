@@ -26,6 +26,7 @@ void trainingRoom3(Player&);
 void trainingRoom4(Player&);
 void slow(string);
 void endScene();
+void loganReunion();
 
 int main()
 {
@@ -271,6 +272,61 @@ void medicArea(Player &user)
 		}
 	} while (userChoice != 2);
 }
+
+void loganReunion()
+{
+	cout << endl << "\t";
+	slow("Logan: Virgil is that you?");
+	cout << endl << "\t";
+	slow("Virgil: Logan! I thought I'd never get to see you again!");
+	cout << endl << "\t";
+	slow("Logan: They didn't hurt you did they?");
+	cout << endl << "\t";
+	slow("Virgil: What are you doing here Lo?");
+	cout << endl << "\t";
+	slow("Logan: I was trying to protect you");
+	cout << endl << "\t";
+	slow("Virgil: Protect me?\n");
+	cout << endl << "\t";
+	slow("Logan: You need to leave now");
+	cout << endl << "\t";
+	slow("Virgil: What no!");
+	cout << endl << "\t";
+	slow("Logan: They'll kill you if they find you");
+	cout << endl << "\t";
+	slow("Virgil: They can try");
+	cout << endl << "\t";
+	slow("Logan: Please Virgil just go before they find you");
+	cout << endl << "\t";
+	slow("Virgil: I'm not leaving without you... not again");
+	cout << endl << "\t";
+	slow("Logan: Nothing I do is going to make you leave is it");
+	cout << endl << "\t";
+	slow("Virgil: Nope");
+	cout << endl << "\t";
+	slow("Logan: Alright, how can I help?");
+	cout << endl << "\t";
+	slow("Marco: We are trying to get Roman out of here");
+	cout << endl << "\t";
+	slow("Logan: Oh he is not going to like that");
+	cout << endl << "\t";
+	slow("Virgil: We know but he can't keep living a lie");
+	cout << endl << "\t";
+	slow("Logan: I agree");
+	cout << endl << "\t";
+	slow("Logan: Roman has become someone I have grown to care for");
+	cout << "you hear somthing mumbled that sounds like \"not for lack of trying\"\n\t";
+	slow("Virgil: You alright Specs?");
+	cout << endl << "\t";
+	slow("Logan: I am adaquate");
+	cout << endl << "\t";
+	slow("Missy: Sounds like bullshit but we don't have time to adress that");
+	cout << endl << "\t";
+	low("Missy: Y'all only got so long before someone sees us");
+	cout << endl << "\t";
+	slow("Logan: Right, I'll help however I can");
+	cout << endl;
+}
 #pragma endregion
 
 
@@ -281,6 +337,24 @@ void endScene()
 	cout << "WRITE ENDING WORDS" << endl;
 	cout << "YOU DIED! GAME OVER" << endl;
 	endProgram();
+}
+
+void deviceTestingRoom(Player &user)
+{
+	//describe setting
+	cout << "DESCRIBE SETTING" << endl;
+
+	//worker inside no chance to sneak by them
+	Enemy worker;
+	worker.setAware();
+	fightScene(user, worker);
+	cout << "\tWhat would you like to do?" << endl;
+	cout << "\t   1: go to hallway" << endl;
+	userChoice = validateInteger(1, 1);
+	if (userChoice == 1);
+	{
+		bottomHallway(user);
+	}
 }
 
 void heroMeeting(Player &user)
@@ -307,7 +381,9 @@ void scienceLab(Player &user)
 	{
 		//describe setting mention oddly familiar worker
 		user.setLoganFound();
+
 		//reunion dialogue scene
+		loganReunion();
 	}
 }
 
@@ -545,11 +621,7 @@ void trainingRoom4(Player &user)
 
 //	INCOMPLETE
 #pragma region incomplete
-void deviceTestingRoom(Player &user)
-{
-	//describe setting
-	//worker inside no chance to sneak by them
-}
+
 
 void trainingRoom1(Player &user)
 {
@@ -604,6 +676,3 @@ void trainingRoom3(Player &user)
 	//wanna keep trying (loop if yes if no then go to bottom hallway)
 }
 #pragma endregion
-
-
-
